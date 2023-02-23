@@ -2,6 +2,7 @@
 1. Created the VPC
 2. created the 2 subnets(good to maintain 2 always if 1 not worked other will be safer side) in above vpc.
 3. created the peering connection
+(if nor peering conn,go for direct connect or VPN )
 ******
 Created a server using above vpc and subnet and verified the connection using ssh
 
