@@ -48,11 +48,11 @@ resource "aws_vpc_peering_connection" "peer" {
 #  vpc_peering_connection_id = aws_vpc_peering_connection.peer.id
 #}
 #
-#resource "aws_route" "default-vpc" {
-#  route_table_id            = data.aws_vpc.default_vpc.main_route_table_id
-#  destination_cidr_block    = var.cidr_block
-#  vpc_peering_connection_id = aws_vpc_peering_connection.peer.id
-#}
+resource "aws_route" "default-vpc" {
+  route_table_id            = data.aws_vpc.default_vpc.main_route_table_id
+  destination_cidr_block    = var.cidr_block
+  vpc_peering_connection_id = aws_vpc_peering_connection.peer.id
+}
 #
 #resource "aws_route" "igw_route" {
 #  route_table_id            = aws_vpc.main.default_route_table_id
