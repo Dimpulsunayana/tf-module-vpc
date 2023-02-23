@@ -72,12 +72,16 @@ resource "aws_route_table" "public" {
     cidr_block = data.aws_vpc.default_vpc.cidr_block
     vpc_peering_connection_id = aws_vpc_peering_connection.peer.id
   }
-
-
   tags = merge(
     local.common_tags,
     { Name = "${var.env}-public-route_table" }
   )
+}
+
+resource "aws_route_table_association" "public-rt-association" {
+  count          = length(aws_subnet.public_subnet)
+  subnet_id      = aws_subnet.public_subnet.*.id[count.index]
+  route_table_id = aws_route_table.public.id
 }
 
 
