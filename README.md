@@ -8,4 +8,4 @@ Created a server using above vpc and subnet and verified the connection using ss
 But still unable to connect because it need route table conection.
 4. created the route table for the default_vpc and newly created vpc
 ****
-Now we are able to connect the server
+Now we are able to connect the server but there is no internet connection
