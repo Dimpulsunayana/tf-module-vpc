@@ -14,7 +14,7 @@ resource "aws_subnet" "public_subnet" {
 
   tags = merge(
     local.common_tags,
-    { Name = "${var.env}-subnet-${count.index +1}" }
+    { Name = "${var.env}-public_subnet-${count.index +1}" }
   )
 }
 
@@ -25,7 +25,7 @@ resource "aws_subnet" "private_subnet" {
 
   tags = merge(
     local.common_tags,
-    { Name = "${var.env}-subnet-${count.index +1}" }
+    { Name = "${var.env}-private_subnet-${count.index +1}" }
   )
 }
 
