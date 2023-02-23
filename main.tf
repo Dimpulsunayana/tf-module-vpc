@@ -95,6 +95,24 @@ resource "aws_internet_gateway" "igw" {
   )
 }
 
+resource "aws_eip" "ngw-eip" {
+  vpc      = true
+}
+
+resource "aws_nat_gateway" "example" {
+  allocation_id = aws_eip.ngw-eip.id
+  subnet_id     = aws_subnet.public_subnet.*.id[0]
+
+  tags = merge(
+    local.common_tags,
+    { Name = "${var.env}-igw" }
+  )
+
+  # To ensure proper ordering, it is recommended to add an explicit dependency
+  # on the Internet Gateway for the VPC.
+  #depends_on = [aws_internet_gateway.example]
+}
+
 #create ec2
 
 #data "aws_ami" "example" {
