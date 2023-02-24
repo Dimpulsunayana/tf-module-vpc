@@ -147,7 +147,7 @@ data "aws_ami" "example" {
 
 resource "aws_instance" "web" {
   ami           = data.aws_ami.example.id
-  instance_type = "t3.medium"
+  instance_type = "t3.micro"
   vpc_security_group_ids = [aws_security_group.allow_tls.id]
   subnet_id   = aws_subnet.private_subnet.*.id[0]
 
