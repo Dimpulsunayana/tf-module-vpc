@@ -4,3 +4,4 @@ variable "env" {}
 variable "default_vpc_id" {}
 variable "public_cidr_subnets" {}
 variable "private_cidr_subnets" {}
+variable "availability_zones" {}

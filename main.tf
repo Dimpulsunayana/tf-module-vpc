@@ -11,6 +11,7 @@ resource "aws_subnet" "public_subnet" {
   count      = length(var.public_cidr_subnets)
   vpc_id     = aws_vpc.main.id
   cidr_block = var.public_cidr_subnets[count.index]
+  availability_zones = var.availability_zones[count.index]
 
   tags = merge(
     local.common_tags,
@@ -22,6 +23,7 @@ resource "aws_subnet" "private_subnet" {
   count      = length(var.private_cidr_subnets)
   vpc_id     = aws_vpc.main.id
   cidr_block = var.private_cidr_subnets[count.index]
+  availability_zones = var.availability_zones[count.index]
 
   tags = merge(
     local.common_tags,
